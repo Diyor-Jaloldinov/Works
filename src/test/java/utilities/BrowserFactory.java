@@ -26,7 +26,12 @@ public class BrowserFactory {
                 driver = new FirefoxDriver();
                 break;
             case "safari":
-                return null;
+                System.out.println("This is Windows, There can be no safari browser.");
+                break;
+            default:
+                System.out.println("Invalid browser name!.");
+                System.out.println("Try one: chrome, edge, firefox.");
+                break;
         }
 
         return driver;

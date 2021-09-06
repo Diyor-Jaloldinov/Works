@@ -1,4 +1,4 @@
-package exercises;
+package exercises.ex1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,12 +7,9 @@ import utilities.BrowserFactory;
 public class BasicLoginAUTH {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver  = BrowserFactory.getDriver("edge");
-        if(driver!=null){
-            testCase2(driver);
-        }else{
-            System.out.println("Browser not found!");
-            System.out.println("Try other: chrome, edge, firefox");
-        }
+
+        testCase2(driver);
+
 
 
 
