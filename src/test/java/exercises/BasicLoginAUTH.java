@@ -11,7 +11,7 @@ public class BasicLoginAUTH {
             testCase2(driver);
         }else{
             System.out.println("Browser not found!");
-            System.out.println("Try other: chrome,edge,firefox");
+            System.out.println("Try other: chrome, edge, firefox");
         }
 
 
