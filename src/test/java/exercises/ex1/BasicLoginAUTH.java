@@ -8,8 +8,9 @@ public class BasicLoginAUTH {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver  = BrowserFactory.getDriver("edge");
 
+        testCase1(driver);
         testCase2(driver);
-
+        driver.close();
 
 
 
@@ -32,7 +33,7 @@ public class BasicLoginAUTH {
         driver.findElement(By.name("ctl00$MainContent$login_button")).click();
 
         Thread.sleep(2000);
-        driver.quit();
+
 
 
     }
@@ -51,7 +52,7 @@ public class BasicLoginAUTH {
         }
 
         Thread.sleep(2000);
-        driver.quit();
+
 
     }
 }
