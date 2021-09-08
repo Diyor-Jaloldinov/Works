@@ -1,4 +1,4 @@
-package exercises.ex1;
+package exercises.basic_navigation_homework;
 
 import org.openqa.selenium.WebDriver;
 import utilities.BrowserFactory;
