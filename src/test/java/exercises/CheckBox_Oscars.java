@@ -11,9 +11,9 @@ public class CheckBox_Oscars {
 
 
     @Test
-    public void testCase(){
+    public void testCase1(){
 
-        WebDriver driver = BrowserFactory.getDriver("edge");
+        WebDriver driver = BrowserFactory.getDriver("chrome");
 
         driver.get("https://moneygaming.qa.gameaccount.com/sign-up.shtml");
 
@@ -24,7 +24,7 @@ public class CheckBox_Oscars {
         String checkBoxText = "I accept the Terms and Conditions and certify that I am over the age of 18.";
 
         Assert.assertEquals(checkBoxText,
-                driver.findElement(By.cssSelector(".validation")).getText(),"Comparing validation text");
+                driver.findElement(By.cssSelector("div.validation")).getText(),"Comparing validation text");
 
         WebElement validationCheckBox = driver.findElement(By.name("map(terms)"));
         validationCheckBox.click();
