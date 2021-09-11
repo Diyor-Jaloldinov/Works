@@ -4,16 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utilities.BrowserFactory;
 
 public class CheckBox_Oscars {
 
+    WebDriver driver;
+
+    @BeforeTest
+    public void setUp(){
+         driver = BrowserFactory.getDriver("chrome");
+    }
+
 
     @Test
     public void testCase1(){
-
-        WebDriver driver = BrowserFactory.getDriver("chrome");
 
         driver.get("https://moneygaming.qa.gameaccount.com/sign-up.shtml");
 
@@ -40,6 +47,11 @@ public class CheckBox_Oscars {
 
 
 
+    }
+
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
     }
 
 }
