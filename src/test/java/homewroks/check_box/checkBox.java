@@ -12,7 +12,7 @@ public class checkBox {
 
 
     @Test
-    public void testCase1()  {
+    public void testCase1()   {
         WebDriver driver = BrowserFactory.getDriver("edge");
 
         driver.manage().window().maximize();
