@@ -10,33 +10,45 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utilities.BrowserFactory;
 
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 public class sixToEighth {
 
     WebDriver driver;
 
     @BeforeMethod
     public void setUp(){
-        driver = BrowserFactory.getDriver("firefox");
+        driver = BrowserFactory.getDriver("chrome");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @AfterMethod
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(2000);
+    public void tearDown()  {
         driver.quit();
     }
 
     @Test
-    public void test6(){
+    public void test6()  {
         driver.get("https://www.fakemail.net/");
         String email = driver.findElement(By.className("animace")).getText();
-        System.out.println(email);
         driver.get("https://practice-cybertekschool.herokuapp.com");
         driver.findElement(By.xpath("//a[@href='/sign_up']")).click();
         driver.findElement(By.name("full_name")).sendKeys("John Doe");
         driver.findElement(By.name("email")).sendKeys(email);
         driver.findElement(By.className("radius")).click();
-        //need to check the link is corrupted ! ! !
+        String actualSubheader = "Thank you for signing up. Click the button below to return to the home page.";
+        String expectedSubheader = driver.findElement(By.className("subheader")).getText();
+        Assert.assertEquals(actualSubheader,expectedSubheader,"Verify confirmation message");
+        driver.get("https://www.fakemail.net/");
+        String actualEmail = "do-not-reply@practice.cybertekschool.com";
+        String actualSubject = "Thanks for subscribing to practice.cybertekschool.com!";
+        String expectedEmail = driver.findElement(By.xpath("//tr[@data-href='2']//td")).getText().replace(" ","");
+        String expectedSubject = driver.findElement(By.xpath("//tr[@data-href='2']//td[2]")).getText();
+        Assert.assertEquals(actualEmail,expectedEmail,"Verify email");
+        Assert.assertEquals(actualSubject,expectedSubject,"Verify email's subject");
+
 
     }
 
