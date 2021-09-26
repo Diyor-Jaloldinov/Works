@@ -74,6 +74,7 @@ public class adidasWebFE {
         driver.findElement(By.cssSelector("#month")).sendKeys("October");
         driver.findElement(By.cssSelector("#year")).sendKeys("2021");
          */
+
         driver.findElement(By.cssSelector("button[onclick*='purchase']")).click();
         // get the info from popup and split into array
         String[] purchaseInfo = driver.findElement(By.cssSelector("p[class*='lead']")).getText().split("\n");
