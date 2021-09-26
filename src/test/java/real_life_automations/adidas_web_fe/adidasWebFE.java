@@ -37,7 +37,7 @@ public class adidasWebFE {
     public void test1() {
         // Having data in array format, so we can iterate through  each product id
         String[] product = new String[] {"8","12"};
-        String[][] buyerinfo = new String[][] {{"#name","John Doe"}, {"#country","Automation"},
+        String[][] buyerInfo = new String[][] {{"#name","John Doe"}, {"#country","Automation"},
                 {"#city","Selenium"},{"#card","Master Card"},{"#month","October"},{"#year","2021"}};
 
         WebDriverWait wait = new WebDriverWait(driver,2);
@@ -62,7 +62,7 @@ public class adidasWebFE {
         //click buy and fill in the inputs with personal info
         driver.findElement(By.cssSelector("button[data-target*='#orderModal']")).click();
         //getting info from source and iterate through it one by one
-        for (String[] strings : buyerinfo) {
+        for (String[] strings : buyerInfo) {
             driver.findElement(By.cssSelector(strings[0])).sendKeys(strings[1]);
         }
 
