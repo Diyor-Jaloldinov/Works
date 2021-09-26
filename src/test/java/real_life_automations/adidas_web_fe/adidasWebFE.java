@@ -3,7 +3,6 @@ package real_life_automations.adidas_web_fe;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -38,6 +37,9 @@ public class adidasWebFE {
     public void test1() {
         // Having data in array format, so we can iterate through  each product id
         String[] product = new String[] {"8","12"};
+        String[][] buyerinfo = new String[][] {{"#name","John Doe"}, {"#country","Automation"},
+                {"#city","Selenium"},{"#card","Master Card"},{"#month","October"},{"#year","2021"}};
+
         WebDriverWait wait = new WebDriverWait(driver,2);
 
         // iterating through each product id and buy by id
@@ -59,12 +61,19 @@ public class adidasWebFE {
 
         //click buy and fill in the inputs with personal info
         driver.findElement(By.cssSelector("button[data-target*='#orderModal']")).click();
+        //getting info from source and iterate through it one by one
+        for (String[] strings : buyerinfo) {
+            driver.findElement(By.cssSelector(strings[0])).sendKeys(strings[1]);
+        }
+
+        /*  // inserting info one by one
         driver.findElement(By.cssSelector("#name")).sendKeys("John Doe");
         driver.findElement(By.cssSelector("#country")).sendKeys("Automation");
         driver.findElement(By.cssSelector("#city")).sendKeys("selenium");
         driver.findElement(By.cssSelector("#card")).sendKeys("Master Bistro");
         driver.findElement(By.cssSelector("#month")).sendKeys("October");
         driver.findElement(By.cssSelector("#year")).sendKeys("2021");
+         */
         driver.findElement(By.cssSelector("button[onclick*='purchase']")).click();
         // get the info from popup and split into array
         String[] purchaseInfo = driver.findElement(By.cssSelector("p[class*='lead']")).getText().split("\n");
